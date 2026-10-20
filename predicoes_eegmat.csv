@@ -1,0 +1,10 @@
+sample_id,patient_id,y_true,y_pred,model_version
+Subject05,Subject05,1,1,LogisticRegression_v1
+Subject33,Subject33,1,0,LogisticRegression_v1
+Subject03,Subject03,1,1,LogisticRegression_v1
+Subject29,Subject29,1,1,LogisticRegression_v1
+Subject21,Subject21,0,1,LogisticRegression_v1
+Subject34,Subject34,1,1,LogisticRegression_v1
+Subject10,Subject10,0,1,LogisticRegression_v1
+Subject12,Subject12,1,1,LogisticRegression_v1
+Subject09,Subject09,0,1,LogisticRegression_v1
