@@ -246,3 +246,48 @@ A análise inicial mostrou um conjunto com **36 registros**, sem duplicidades id
 A distribuição do campo `Gender` apresentou **27 registros F (75,0%)** e **9 registros M (25,0%)**.
 
 As consultas SQL/DuckDB utilizadas para as verificações de qualidade fazem parte do projeto e permitem reproduzir os resultados a partir do arquivo Parquet.
+
+# Aula 04 — Aprendizado de Máquina aplicado ao EEGMAT
+
+## Objetivo
+Classificação supervisionada da variável `Count quality` utilizando
+idade, gênero e ano de gravação.
+
+## Dados
+EEGMAT, PhysioNet:
+https://physionet.org/content/eegmat/1.0.0/
+
+Arquivo:
+https://physionet.org/files/eegmat/1.0.0/subject-info.csv
+
+## Modelo
+Regressão logística com pré-processamento dentro de um pipeline.
+Referência científica: Cox (1958), DOI:
+https://doi.org/10.1111/j.2517-6161.1958.tb00292.x
+
+Referência do conjunto de dados:
+Zyma et al. (2019), DOI:
+https://doi.org/10.3390/data4010014
+
+## Execução
+1. Abra o notebook no Google Colab.
+2. Execute as células na ordem.
+3. A célula principal carrega os dados, divide treino/teste,
+   treina o modelo, avalia e gera os arquivos.
+4. As versões das dependências estão em `requirements.txt`.
+
+## Arquivos gerados
+- `predicoes_eegmat.csv`: predições do conjunto de teste.
+- `predicoes_todos_eegmat.csv`: predições exploratórias em todos os dados.
+- `metricas.json`: métricas e intervalos de confiança.
+- `metricas_por_classe.csv`: resultados por classe.
+- `matriz_confusao.csv`: matriz de confusão.
+- `modelo_eegmat_logistic_regression.joblib`: pipeline treinado.
+- `relatorio_aula04.md`: relatório do experimento.
+- `REFERENCIAS.md`: referências bibliográficas.
+- `requirements.txt`: versões das dependências.
+
+## Limitações
+O conjunto possui apenas 36 participantes. O modelo utiliza metadados
+e não analisa diretamente os sinais EEG brutos. As predições para todos
+os participantes não devem ser usadas como avaliação independente.
