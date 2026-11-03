@@ -291,3 +291,64 @@ https://doi.org/10.3390/data4010014
 O conjunto possui apenas 36 participantes. O modelo utiliza metadados
 e não analisa diretamente os sinais EEG brutos. As predições para todos
 os participantes não devem ser usadas como avaliação independente.
+
+# Aula 05 – Embeddings, Busca Vetorial e Modelos Multimodais
+
+Esta etapa amplia o projeto EEGMAT por meio da aplicação do modelo
+pré-treinado LaBraM para extração de embeddings de sinais EEG.
+
+## Modelo utilizado
+
+- Modelo: LaBraM (Large Brain Model)
+- Checkpoint: `braindecode/labram-pretrained`
+- Biblioteca: Braindecode {versao_braindecode}
+- PyTorch: {versao_torch}
+- Dimensão dos embeddings: 200
+
+Referências:
+- Artigo: Jiang et al. (2024), *Large Brain Model for Learning Generic
+  Representations with Tremendous EEG Data in BCI*.
+- Repositório: https://github.com/935963004/LaBraM
+- Checkpoint: https://huggingface.co/braindecode/labram-pretrained
+
+## Dados e processamento
+
+Fonte dos dados: https://physionet.org/content/eegmat/1.0.0/
+
+Foram processadas {n_gravacoes} gravações de {n_participantes}
+participantes, resultando em {n_janelas} janelas de 15 segundos.
+
+Os sinais foram selecionados em 19 canais, filtrados, reamostrados
+para 200 Hz e segmentados em janelas completas de 3.000 amostras.
+
+## Resultados
+
+- Similaridade média de cosseno: {similaridade_media:.4f}
+- Vizinhos da mesma condição: {mesma_condicao:.2f}%
+- Vizinhos do mesmo participante: {mesmo_participante:.2f}%
+- Três vizinhos mais próximos por gravação.
+
+A visualização t-SNE não apresentou separação visual evidente entre
+as duas condições experimentais. Os resultados são exploratórios
+e não representam avaliação de acurácia de classificação.
+
+## Arquivos da Aula 05
+
+Os resultados estão na pasta `resultados_aula05/`:
+
+- `embeddings_por_janela.csv`
+- `embeddings_por_gravacao.csv`
+- `vizinhos_mais_proximos.csv`
+- `visualizacao_tsne_eegmat.png`
+- `relatorio_aula05.md`
+- `checkpoints/`
+
+## Limitações
+
+O modelo foi originalmente configurado para 128 canais, enquanto
+o experimento utilizou 19 canais. Além disso, o pré-processamento
+adotado pode diferir do utilizado no treinamento original do LaBraM.
+Não foi realizado treinamento supervisionado ou validação de
+classificação das condições.
+"""
+
